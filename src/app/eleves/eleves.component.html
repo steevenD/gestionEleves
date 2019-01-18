@@ -92,7 +92,7 @@
       </div>
       <div style="margin-top: 30px">
         <button (click)="addEleve()" [disabled]="userForm.invalid" style="margin-right: 10px" class="btn btn-success" type="submit">Ajouter l'élève</button>
-        <button (click)="updateEleve()" [disabled]="userForm.invalid"  class="btn btn-warning" type="submit">Modifier l'élève</button>
+        <button *ngIf="eleveToModify" (click)="updateEleve()" [disabled]="userForm.invalid"  class="btn btn-warning" type="submit">Modifier l'élève</button>
       </div>
     </div>
   </form>
