@@ -1,0 +1,101 @@
+<div class="flex">
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Modifier</th>
+      <th scope="col">Détails</th>
+      <th scope="col">Supprimer</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let e of eleves | keyvalue">
+      <th scope="row">{{e.key}}</th>
+      <td>{{e.value.nom | uppercase}}</td>
+      <td>{{e.value.prenom | lowercase}}</td>
+      <td><button class="btn btn-warning" (click)="handleClickUpdate(e.value)">Modifier</button></td>
+      <td><button class="btn btn-info" (click)="getDescription(e.value.id)">Détail</button></td>
+      <td><button class="btn btn-danger" (click)="handleClickDelete(e.value.id)">Supprimer</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="flex btns">
+    <button class="btn btn-primary btnEleve" (click)="getEleveTrenteAns()">Afficher les personnes de + de 30 ans</button>
+    <button class="btn btn-primary btnEleve" (click)="handleClickInitial()">Afficher les initiales</button>
+  </div>
+  <div class="description" *ngIf="eleveToDisplay">
+    <p>Classe : {{eleveToDisplay.nomDeClasse}}</p>
+    <p>Nom Prénom : {{eleveToDisplay.nom}} {{eleveToDisplay.prenom}}</p>
+    <p>Age : {{eleveToDisplay.age | number:'.2' | mineur}}</p>
+    <p>Description : {{eleveToDisplay.description}}</p>
+    <p>Fillière : {{eleveToDisplay.filliere}}</p>
+  </div>
+</div>
+
+<div class="flex">
+  <h4>Ajoutez un élève</h4>
+  <form [formGroup]="userForm" class="flex">
+    <div style="margin: 0 50px">
+      <div class="form-group">
+        <label>Nom de la classe</label><br>
+        <input formControlName="classC">
+      </div>
+      <div class="form-group">
+        <label>Nom Eleve*</label><br>
+        <input formControlName="nom">
+        <div class="alert alert-danger" *ngIf="nomControl.dirty && nomControl.hasError('required')">
+          Nom obligatoire
+        </div>
+        <div class="alert alert-danger" *ngIf="nomControl.dirty && nomControl.hasError('maxlength')">
+          Nom a 25 caracteres max
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Prenom Eleve*</label><br>
+        <input formControlName="prenom">
+        <div class="alert alert-danger" *ngIf="prenomControl.dirty && prenomControl.hasError('required')">
+          Prénom obligatoire
+        </div>
+        <div class="alert alert-danger" *ngIf="prenomControl.dirty && prenomControl.hasError('maxlength')">
+          Prénom a 25 caractères max
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="form-group">
+        <label>Age*</label><br>
+        <input pattern="[0-9]*" formControlName="age">
+        <div class="alert alert-danger" *ngIf="ageControl.dirty && ageControl.hasError('required')">
+          Age obligatoire
+        </div>
+        <div class="alert alert-danger" *ngIf="ageControl.dirty && ageControl.hasError('pattern')">
+          Age est un chiffre
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Filliere</label><br>
+        <input formControlName="filliere">
+      </div>
+      <div class="form-group">
+        <label>Description</label><br>
+        <input formControlName="desc">
+      </div>
+      <div class="form-group">
+        <label>Email</label><br>
+        <input formControlName="mail">
+        <div class="alert alert-danger" *ngIf="emailControl.dirty && emailControl.hasError('pattern')">
+          Mauvais format d'email
+        </div>
+      </div>
+      <div style="margin-top: 30px">
+        <button (click)="addEleve()" [disabled]="userForm.invalid" style="margin-right: 10px" class="btn btn-success" type="submit">Ajouter l'élève</button>
+        <button (click)="updateEleve()" [disabled]="userForm.invalid"  class="btn btn-warning" type="submit">Modifier l'élève</button>
+      </div>
+    </div>
+  </form>
+
+  <app-notification></app-notification>
+</div>

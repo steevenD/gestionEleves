@@ -1,0 +1,18 @@
+<!--<div>-->
+  <!--<p *ngFor="let message of notificationService.getMessages()">-->
+    <!--{{message}}-->
+  <!--</p>-->
+
+<!--</div>-->
+
+<div class="card" *ngIf="notificationService.getMessages().length > 0" >
+  <div class="card-header">
+    Notification
+  </div>
+  <div class="card-body">
+    <p class="card-text"*ngFor="let message of notificationService.getMessages()">
+      {{message}}
+    </p>
+    <button class="btn btn-warning" (click)="notificationService.clear()">Vider les notifs</button>
+  </div>
+</div>

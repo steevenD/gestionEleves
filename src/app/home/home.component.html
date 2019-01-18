@@ -1,0 +1,16 @@
+<h3>Bienvenue sur Home</h3>
+
+<div [hidden]="hidden" [style.color]="color">
+  <h2>My name is {{user.name}}</h2>
+  <h1>The color is {{color}}</h1>
+
+  <app-mon-component></app-mon-component>
+
+</div>
+
+<button class="btn btn-danger" (click)="hidden = !hidden">Cacher/Montrer</button> <br><br><br>
+<button class="btn btn-info" (click)="color = 'blue'">Blue</button>
+<button class="btn btn-danger" (click)="color = 'red'">Red</button>
+<button class="btn btn-success" (click)="color = 'green'">Green</button> <br><br><br>
+<button class="btn btn-warning" (click)="user.name= 'Henry'">Je m'appelle Henry</button>
+<button class="btn btn-warning" (click)="user.name= 'Jean'">Je m'appelle Jean</button>

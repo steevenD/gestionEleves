@@ -1,0 +1,25 @@
+.flex {
+  display: flex;
+}
+
+.description{
+  background: black;
+  color: white;
+  margin-left: 20px;
+  width: 40%;
+  text-align: center;
+}
+
+.btnEleve{
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+table {
+  width: 50%;
+}
+
+.btns{
+  flex-direction: column;
+  margin-left: 20px;
+}
