@@ -158,4 +158,6 @@ export class ElevesComponent implements OnInit {
     this.eleveService.deleteEleve(id).subscribe();
   }
 
+
+
 }

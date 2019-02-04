@@ -15,6 +15,8 @@ import { NotificationComponent } from './notification/notification.component';
 import {HttpClientModule} from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import {httpInterceptorProviders} from './http-interceptors';
+import { Error404Component } from './http-interceptors/error404/error404.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { InMemoryDataService } from './in-memory-data.service';
     MineurPipe,
     HomeComponent,
     EleveDetailComponent,
-    NotificationComponent
+    NotificationComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,
@@ -32,10 +35,10 @@ import { InMemoryDataService } from './in-memory-data.service';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false})
+    // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false})
 
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

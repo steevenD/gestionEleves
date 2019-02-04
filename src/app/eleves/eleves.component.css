@@ -23,3 +23,8 @@ table {
   flex-direction: column;
   margin-left: 20px;
 }
+
+.github {
+  width: 155px;
+  height: 52px;
+}

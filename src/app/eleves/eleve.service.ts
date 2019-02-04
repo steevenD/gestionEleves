@@ -56,4 +56,12 @@ export class EleveService {
   private log(message: string) {
     this.notificationService.add(`${message}`);
   }
+
+  getApiGitHub() {
+    return this.http.get('https://api.github.com');
+  }
+
+  getApiGitHubError() {
+    return this.http.get('https://api.github.com/pppError');
+  }
 }
