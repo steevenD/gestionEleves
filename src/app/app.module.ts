@@ -17,6 +17,9 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import {httpInterceptorProviders} from './http-interceptors';
 import { Error404Component } from './http-interceptors/error404/error404.component';
+import { HandleSalleComponent } from './salle/handle-salle/handle-salle.component';
+import { LoopSalleComponent } from './salle/loop-salle/loop-salle.component';
+import { RowSalleComponent } from './salle/row-salle/row-salle.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { Error404Component } from './http-interceptors/error404/error404.compone
     HomeComponent,
     EleveDetailComponent,
     NotificationComponent,
-    Error404Component
+    Error404Component,
+    HandleSalleComponent,
+    LoopSalleComponent,
+    RowSalleComponent
   ],
   imports: [
     BrowserModule,
@@ -35,10 +41,12 @@ import { Error404Component } from './http-interceptors/error404/error404.compone
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false})
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false})
 
   ],
-  providers: [httpInterceptorProviders],
+  providers: [
+    // httpInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
