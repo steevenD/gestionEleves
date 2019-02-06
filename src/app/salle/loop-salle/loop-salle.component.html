@@ -1,0 +1,12 @@
+<div class="flex">
+  <div class="salles">
+    <div *ngFor="let salle of salles" class="salle">
+      <app-row-salle [salle]="salle" (salleActive)="getSalleActive($event)"></app-row-salle>
+    </div>
+  </div>
+
+  <div *ngIf="rowSalleCurrent">
+    <h3>Salle courrante</h3>
+    <app-row-salle [salle]="rowSalleCurrent"></app-row-salle>
+  </div>
+</div>

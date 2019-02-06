@@ -1,0 +1,12 @@
+.salle {
+  background: blue;
+}
+
+.flex {
+  display: flex;
+}
+
+.salles {
+  width: 500px;
+  margin-right: 30px;
+}
